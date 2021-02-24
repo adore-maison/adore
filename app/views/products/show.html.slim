@@ -1,0 +1,69 @@
+p#notice = notice
+
+p
+  strong Asin:
+  = @product.asin
+p
+  strong Description:
+  = @product.description
+p
+  strong No potos:
+  = @product.no_potos
+p
+  strong Factory price:
+  = @product.factory_price
+p
+  strong Dimension:
+  = @product.dimension
+p
+  strong Weight kg:
+  = @product.weight_kg
+p
+  strong Target selling price:
+  = @product.target_selling_price
+p
+  strong Launch price:
+  = @product.launch_price
+p
+  strong Units needed to rank:
+  = @product.units_needed_to_rank
+p
+  strong Units per master carton:
+  = @product.units_per_master_carton
+p
+  strong Target sales per day:
+  = @product.target_sales_per_day
+p
+  strong Mfg time days:
+  = @product.mfg_time_days
+p
+  strong Ship to amz days:
+  = @product.ship_to_amz_days
+p
+  strong Tarrif rate:
+  = @product.tarrif_rate
+p
+  strong Transaction fees:
+  = @product.transaction_fees
+p
+  strong Target ppc tacos:
+  = @product.target_ppc_tacos
+p
+  strong Inspection cost:
+  = @product.inspection_cost
+p
+  strong Estimated unusable units perc:
+  = @product.estimated_unusable_units_perc
+p
+  strong Other costs:
+  = @product.other_costs
+p
+  strong Units needed to rank:
+  = @product.units_needed_to_rank
+p
+  strong Inventory roll per year:
+  = @product.inventory_roll_per_year
+
+=> link_to 'Edit', edit_product_path(@product)
+'|
+=< link_to 'Back', products_path
