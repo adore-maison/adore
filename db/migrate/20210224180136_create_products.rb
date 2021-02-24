@@ -3,7 +3,7 @@ class CreateProducts < ActiveRecord::Migration[6.1]
     create_table :products do |t|
       t.string :asin
       t.text :description
-      t.integer :no_potos
+      t.string :photo_url
       t.decimal :l_cm, precision: 15, scale: 2
       t.decimal :b_cm, precision: 15, scale: 2
       t.decimal :h_cm, precision: 15, scale: 2
@@ -15,6 +15,8 @@ class CreateProducts < ActiveRecord::Migration[6.1]
       t.integer :target_sales_per_day
       t.integer :mfg_time_days
       t.integer :ship_to_amz_days
+      t.string :hsn
+      t.string :main_category
       # RF
       t.decimal :amz_referal_rate, precision: 15, scale: 2
       t.decimal :amz_fixed_closing_fee, precision: 15, scale: 2

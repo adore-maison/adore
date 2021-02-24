@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2021_02_24_180136) do
   create_table "products", force: :cascade do |t|
     t.string "asin"
     t.text "description"
-    t.integer "no_potos"
+    t.string "photo_url"
     t.decimal "l_cm", precision: 15, scale: 2
     t.decimal "b_cm", precision: 15, scale: 2
     t.decimal "h_cm", precision: 15, scale: 2
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 2021_02_24_180136) do
     t.integer "target_sales_per_day"
     t.integer "mfg_time_days"
     t.integer "ship_to_amz_days"
+    t.string "hsn"
+    t.string "main_category"
     t.decimal "amz_referal_rate", precision: 15, scale: 2
     t.decimal "amz_fixed_closing_fee", precision: 15, scale: 2
     t.decimal "fba_fees", precision: 15, scale: 2
