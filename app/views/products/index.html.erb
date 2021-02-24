@@ -1,0 +1,67 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Products</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Asin</th>
+      <th>Description</th>
+      <th>No potos</th>
+      <th>Factory price</th>
+      <th>Dimension</th>
+      <th>Weight kg</th>
+      <th>Target selling price</th>
+      <th>Launch price</th>
+      <th>Units needed to rank</th>
+      <th>Units per master carton</th>
+      <th>Target sales per day</th>
+      <th>Mfg time days</th>
+      <th>Ship to amz days</th>
+      <th>Tarrif rate</th>
+      <th>Transaction fees</th>
+      <th>Target ppc tacos</th>
+      <th>Inspection cost</th>
+      <th>Estimated unusable units perc</th>
+      <th>Other costs</th>
+      <th>Units needed to rank</th>
+      <th>Inventory roll per year</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.asin %></td>
+        <td><%= product.description %></td>
+        <td><%= product.no_potos %></td>
+        <td><%= product.factory_price %></td>
+        <td><%= product.dimension %></td>
+        <td><%= product.weight_kg %></td>
+        <td><%= product.target_selling_price %></td>
+        <td><%= product.launch_price %></td>
+        <td><%= product.units_needed_to_rank %></td>
+        <td><%= product.units_per_master_carton %></td>
+        <td><%= product.target_sales_per_day %></td>
+        <td><%= product.mfg_time_days %></td>
+        <td><%= product.ship_to_amz_days %></td>
+        <td><%= product.tarrif_rate %></td>
+        <td><%= product.transaction_fees %></td>
+        <td><%= product.target_ppc_tacos %></td>
+        <td><%= product.inspection_cost %></td>
+        <td><%= product.estimated_unusable_units_perc %></td>
+        <td><%= product.other_costs %></td>
+        <td><%= product.units_needed_to_rank %></td>
+        <td><%= product.inventory_roll_per_year %></td>
+        <td><%= link_to 'Show', product %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Product', new_product_path %>

@@ -1,0 +1,122 @@
+<%= form_with(model: product) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+        <% product.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :asin %>
+    <%= form.text_field :asin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :no_potos %>
+    <%= form.text_field :no_potos %>
+  </div>
+
+  <div class="field">
+    <%= form.label :factory_price %>
+    <%= form.text_field :factory_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dimension %>
+    <%= form.text_field :dimension %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weight_kg %>
+    <%= form.text_field :weight_kg %>
+  </div>
+
+  <div class="field">
+    <%= form.label :target_selling_price %>
+    <%= form.text_field :target_selling_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :launch_price %>
+    <%= form.text_field :launch_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :units_needed_to_rank %>
+    <%= form.text_field :units_needed_to_rank %>
+  </div>
+
+  <div class="field">
+    <%= form.label :units_per_master_carton %>
+    <%= form.text_field :units_per_master_carton %>
+  </div>
+
+  <div class="field">
+    <%= form.label :target_sales_per_day %>
+    <%= form.text_field :target_sales_per_day %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mfg_time_days %>
+    <%= form.text_field :mfg_time_days %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ship_to_amz_days %>
+    <%= form.text_field :ship_to_amz_days %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tarrif_rate %>
+    <%= form.text_field :tarrif_rate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :transaction_fees %>
+    <%= form.text_field :transaction_fees %>
+  </div>
+
+  <div class="field">
+    <%= form.label :target_ppc_tacos %>
+    <%= form.text_field :target_ppc_tacos %>
+  </div>
+
+  <div class="field">
+    <%= form.label :inspection_cost %>
+    <%= form.text_field :inspection_cost %>
+  </div>
+
+  <div class="field">
+    <%= form.label :estimated_unusable_units_perc %>
+    <%= form.text_field :estimated_unusable_units_perc %>
+  </div>
+
+  <div class="field">
+    <%= form.label :other_costs %>
+    <%= form.text_field :other_costs %>
+  </div>
+
+  <div class="field">
+    <%= form.label :units_needed_to_rank %>
+    <%= form.text_field :units_needed_to_rank %>
+  </div>
+
+  <div class="field">
+    <%= form.label :inventory_roll_per_year %>
+    <%= form.text_field :inventory_roll_per_year %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
