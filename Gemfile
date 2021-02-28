@@ -17,7 +17,7 @@ gem 'webpacker', '~> 5.2'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5.2'
-
+gem 'devise', '~> 4.7', '>= 4.7.3'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '~> 1.7', require: false
 
