@@ -11,112 +11,136 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <h2>Basic Info</h2>
+  <div class="form-group">
     <%= form.label :asin %>
-    <%= form.text_field :asin %>
+    <%= form.text_field :asin, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :no_potos %>
-    <%= form.text_field :no_potos %>
+  <div class="form-group">
+    <%= form.label :photo_url %>
+    <%= form.text_field :photo_url, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :factory_price %>
-    <%= form.text_field :factory_price %>
+
+  <div class="form-group">
+    <%= form.label :comp_price %>
+    <%= form.text_field :comp_price, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :dimension %>
-    <%= form.text_field :dimension %>
+  <div class="form-group">
+    <%= form.label :comp_sales %>
+    <%= form.text_field :comp_sales, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :weight_kg %>
-    <%= form.text_field :weight_kg %>
+  <div class="form-group">
+    <%= form.label :comp_revenue %>
+    <%= form.text_field :comp_revenue, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
+    <%= form.label :comp_fba_fees %>
+    <%= form.text_field :comp_fba_fees, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :comp_rating %>
+    <%= form.text_field :comp_rating, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :comp_review_count %>
+    <%= form.text_field :comp_review_count, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :main_keyword %>
+    <%= form.text_field :main_keyword, class: "form-control" %>
+  </div>
+
+  <h2>Supply Evaluation Details</h2>
+  <div class="form-group">
     <%= form.label :target_selling_price %>
-    <%= form.text_field :target_selling_price %>
+    <%= form.text_field :target_selling_price, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :launch_price %>
-    <%= form.text_field :launch_price %>
-  </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :units_needed_to_rank %>
-    <%= form.text_field :units_needed_to_rank %>
+    <%= form.text_field :units_needed_to_rank, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :units_per_master_carton %>
-    <%= form.text_field :units_per_master_carton %>
-  </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :target_sales_per_day %>
-    <%= form.text_field :target_sales_per_day %>
+    <%= form.text_field :target_sales_per_day, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
+    <%= form.label :main_category %>
+    <%= form.text_field :main_category, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :factory_price %>
+    <%= form.text_field :factory_price, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :weight_kg %>
+    <%= form.text_field :weight_kg, class: "form-control" %>
+  </div>
+
+
+  <div class="form-group">
+    <%= form.label :launch_price %>
+    <%= form.text_field :launch_price, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :units_per_master_carton %>
+    <%= form.text_field :units_per_master_carton, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
     <%= form.label :mfg_time_days %>
-    <%= form.text_field :mfg_time_days %>
+    <%= form.text_field :mfg_time_days, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :ship_to_amz_days %>
-    <%= form.text_field :ship_to_amz_days %>
+    <%= form.text_field :ship_to_amz_days, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :tarrif_rate %>
-    <%= form.text_field :tarrif_rate %>
-  </div>
-
-  <div class="field">
-    <%= form.label :transaction_fees %>
-    <%= form.text_field :transaction_fees %>
-  </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :target_ppc_tacos %>
-    <%= form.text_field :target_ppc_tacos %>
+    <%= form.text_field :target_ppc_tacos, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :inspection_cost %>
-    <%= form.text_field :inspection_cost %>
-  </div>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :estimated_unusable_units_perc %>
-    <%= form.text_field :estimated_unusable_units_perc %>
+    <%= form.text_field :estimated_unusable_units_perc, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :other_costs %>
-    <%= form.text_field :other_costs %>
+    <%= form.text_field :other_costs, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :units_needed_to_rank %>
-    <%= form.text_field :units_needed_to_rank %>
+    <%= form.text_field :units_needed_to_rank, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :inventory_roll_per_year %>
-    <%= form.text_field :inventory_roll_per_year %>
+    <%= form.text_field :inventory_roll_per_year, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Add Product", class: 'btn btn-success' %>
   </div>
 <% end %>

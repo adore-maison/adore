@@ -33,3 +33,5 @@ yarn-debug.log*
 
 /coverage/*
 /spec/examples.txt
+/test.rb
+/tasks.rb

@@ -53,6 +53,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:asin, :description, :no_potos, :factory_price, :dimension, :weight_kg, :target_selling_price, :launch_price, :units_needed_to_rank, :units_per_master_carton, :target_sales_per_day, :mfg_time_days, :ship_to_amz_days, :tarrif_rate, :transaction_fees, :target_ppc_tacos, :inspection_cost, :estimated_unusable_units_perc, :other_costs, :units_needed_to_rank, :inventory_roll_per_year)
+      params.require(:product).permit(:asin, :description, :photo_url, :factory_price, :weight_kg, :target_selling_price, :launch_price, :units_needed_to_rank, :units_per_master_carton, :target_sales_per_day, :mfg_time_days, :ship_to_amz_days, :target_ppc_tacos, :inspection_cost, :estimated_unusable_units_perc, :other_costs, :units_needed_to_rank, :inventory_roll_per_year)
     end
 end

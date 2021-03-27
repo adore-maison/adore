@@ -5,26 +5,15 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.1'
 gem 'rails', '6.1.3'
-
-# Use postgresql as the database for Active Record
 gem 'pg', '~> 1.2'
-
-# Use Puma as the app server
 gem 'puma', '~> 5.2'
-
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.2'
-
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5.2'
 gem 'devise', '~> 4.7', '>= 4.7.3'
-# Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '~> 1.7', require: false
-
-# Template Engine
-
-# App monitoring
 gem 'newrelic_rpm', '~> 6.15'
+gem 'wicked', '~> 1.3', '>= 1.3.4'
+
 
 group :development, :test do
   gem 'byebug', '~> 11.1', platforms: %i[mri mingw x64_mingw]
