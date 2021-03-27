@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-    @products = Product.order(created_at: :desc)
+    @products = Product.paginate(page: params[:page]).order(created_at: :desc)
   end
 
   # GET /products/1

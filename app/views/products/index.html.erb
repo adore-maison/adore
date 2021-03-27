@@ -10,6 +10,10 @@
   </div>
 </div>
 
+<div>
+  <%= page_entries_info @products %>
+</div>
+
 <table class="table table-bordered table-responsive">
   <thead>
     <tr>
@@ -47,5 +51,5 @@
     <% end %>
   </tbody>
 </table>
-
+<%= will_paginate @products %>
 <br>
