@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_24_180136) do
+ActiveRecord::Schema.define(version: 2021_03_27_085949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,26 @@ ActiveRecord::Schema.define(version: 2021_02_24_180136) do
     t.decimal "inventory_roll_per_year", precision: 15, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "stage", default: 0
+    t.decimal "comp_price", precision: 15, scale: 2
+    t.integer "comp_sales", default: 0
+    t.integer "comp_revenue", default: 0
+    t.decimal "comp_fba_fees", precision: 15, scale: 2
+    t.decimal "comp_rating", precision: 15, scale: 2
+    t.integer "comp_review_count", default: 0
+    t.string "main_keyword"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
