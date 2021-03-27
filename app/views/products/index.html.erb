@@ -1,7 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h3>Products</h3>
-<%= link_to 'New Product', new_product_path %>
+<div class="row">
+  <div class="col-md-10">
+    <h3>Products</h3>
+  </div>
+
+  <div class="col-md-2">
+    <%= link_to 'New Product', new_product_path, class: "float-right" %>
+  </div>
+</div>
 
 <table class="table table-bordered table-responsive">
   <thead>
@@ -9,18 +16,14 @@
       <th>ASIN</th>
       <th>Photo</th>
       <th>Description</th>
-      <th>Factory Price</th>
-      <th>Weight(kg)</th>
+      <th>Comp Price</th>
+      <th>Comp Sales</th>
       <th>HSN</th>
-      <th>Target Selling Price</th>
-      <th>Launch Price</th>
+      <th>Comp FBA Fees</th>
       <th>Rank Units</th>
       <th>ROI</th>
       <th>Profit Margin</th>
-      <th>Master Carton Units</th>
       <th>Target Daily Sales</th>
-      <th>Mfg time days</th>
-      <th>Ship to AMZ (d)</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -31,18 +34,14 @@
         <td><%= link_to product.asin, "https://amazon.in/dp/#{product.asin}", target: :blank %></td>
         <td><%= image_tag(product.photo_url, width: '120', alt: "Edit Entry") %></td>
         <td><%= link_to product.description, product_path(product) %></td>
-        <td><%= product.factory_price %></td>
-        <td><%= product.weight_kg %></td>
-        <td></td>
-        <td><%= product.target_selling_price %></td>
-        <td><%= product.launch_price %></td>
+        <td><%= product.comp_price %></td>
+        <td><%= product.comp_sales %></td>
+        <td><%= product.hsn %></td>
+        <td><%= product.comp_fba_fees %></td>
         <td><%= product.units_needed_to_rank %></td>
         <td></td>
         <td></td>
-        <td><%= product.units_per_master_carton %></td>
         <td><%= product.target_sales_per_day %></td>
-        <td><%= product.mfg_time_days %></td>
-        <td><%= product.ship_to_amz_days %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
       </tr>
     <% end %>
