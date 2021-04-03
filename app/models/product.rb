@@ -4,5 +4,6 @@ class Product < ApplicationRecord
 
   has_many :selection_rules
   has_many :selection_standards, through: :selection_rules
+  has_many :keywords
 
 end
