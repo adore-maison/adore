@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_27_085949) do
+ActiveRecord::Schema.define(version: 2021_04_03_115711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,29 @@ ActiveRecord::Schema.define(version: 2021_03_27_085949) do
     t.decimal "comp_rating", precision: 15, scale: 2
     t.integer "comp_review_count", default: 0
     t.string "main_keyword"
+    t.text "comments"
+    t.boolean "is_restricted", default: false
+    t.boolean "big_branded", default: false
+    t.boolean "has_glass", default: false
+    t.boolean "has_sharp_edges", default: false
+    t.boolean "has_too_many_variations", default: false
+    t.boolean "is_seasonal", default: false
+    t.boolean "sales_uptrend", default: false
+  end
+
+  create_table "selection_rules", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "selection_standard_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_selection_rules_on_product_id"
+    t.index ["selection_standard_id"], name: "index_selection_rules_on_selection_standard_id"
+  end
+
+  create_table "selection_standards", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|

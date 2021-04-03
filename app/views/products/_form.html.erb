@@ -63,6 +63,25 @@
     <%= form.text_field :main_keyword, class: "form-control" %>
   </div>
 
+  <div class="form-group">
+    <%= form.label :main_category %>
+    <%= form.text_field :main_category, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :comments %>
+    <%= form.text_area :comments, class: "form-control" %>
+  </div>
+
+  <h2>Product Selection Criteria </h2>
+  <div class="form-group">
+    <% SelectionStandard.all.each do |ss| %>
+      <%= check_box_tag "product[selection_standard_ids][]", ss.id, product.selection_standard_ids.include?(ss.id) %>
+      <%= ss.name %><br/>
+    <% end %>
+  </div>
+
+
   <h2>Supply Evaluation Details</h2>
   <div class="form-group">
     <%= form.label :target_selling_price %>
@@ -77,11 +96,6 @@
   <div class="form-group">
     <%= form.label :target_sales_per_day %>
     <%= form.text_field :target_sales_per_day, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :main_category %>
-    <%= form.text_field :main_category, class: "form-control" %>
   </div>
 
   <div class="form-group">
