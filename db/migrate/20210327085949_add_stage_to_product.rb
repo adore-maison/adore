@@ -9,5 +9,7 @@ class AddStageToProduct < ActiveRecord::Migration[6.1]
     add_column :products, :comp_review_count, :integer, default: 0
     add_column :products, :main_keyword, :string
     add_column :products, :comments, :text
+    add_column :products, :dimension, :string
+    add_column :products, :amz_size, :string
   end
 end
