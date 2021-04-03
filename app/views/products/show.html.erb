@@ -1,105 +1,81 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-6">
+    <%= link_to 'Back', products_path %>
+  </div>
+  <div class="col-md-6 ">
+    <%= link_to 'Edit', edit_product_path(@product), class: "float-right" %>
+  </div>
 
-<p>
-  <strong>Asin:</strong>
-  <%= @product.asin %>
-</p>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <h4>Product Info</h4>
+        <%= image_tag(@product.photo_url, width: '120', alt: "Edit Entry") %>
+        <p>
+          <strong>Asin:</strong>
+          <%= @product.asin %>
+        </p>
+        <p>
+          <strong>Description:</strong>
+          <%= @product.description %>
+        </p>
+        <p>
+          <strong>Main Keyword:</strong>
+          <%= @product.main_keyword %>
+        </p>
+        <p>
+          <strong>Main Category:</strong>
+          <%= @product.main_category %>
+        </p>
+        <p>
+          <strong>Dimension:</strong>
+          <%= @product.dimension %>
+        </p>
+        <p>
+          <strong>Weight kg:</strong>
+          <%= @product.weight_kg %>
+        </p>
+        <p>
+          <strong>Amazon Shipping Size:</strong>
+          <%= @product.amz_size %>
+        </p>
+        <p>
+          <strong>Avg Price:</strong>
+          <%= @product.comp_price %>
+        </p>
+        <p>
+          <strong>Avg Sales:</strong>
+          <%= @product.comp_sales %>
+        </p>
+        <p>
+          <strong>Rating:</strong>
+          <%= @product.comp_rating %>
+        </p>
+        <p>
+          <strong>Review Count:</strong>
+          <%= @product.comp_review_count %>
+        </p>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <h4>Selection Rules</h4>
+        <% SelectionStandard.all.each do |ss| %>
+          <%= check_box_tag "product[selection_standard_ids][]", ss.id, @product.selection_standard_ids.include?(ss.id), disabled: true %>
+          <%= ss.name %><br/>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>No potos:</strong>
-  <%= @product.photo_url %>
-</p>
-
-<p>
-  <strong>Factory price:</strong>
-  <%= @product.factory_price %>
-</p>
-
-<p>
-  <strong>Dimension:</strong>
-</p>
-
-<p>
-  <strong>Weight kg:</strong>
-  <%= @product.weight_kg %>
-</p>
-
-<p>
-  <strong>Target selling price:</strong>
-  <%= @product.target_selling_price %>
-</p>
-
-<p>
-  <strong>Launch price:</strong>
-  <%= @product.launch_price %>
-</p>
-
-<p>
-  <strong>Units needed to rank:</strong>
-  <%= @product.units_needed_to_rank %>
-</p>
-
-<p>
-  <strong>Units per master carton:</strong>
-  <%= @product.units_per_master_carton %>
-</p>
-
-<p>
-  <strong>Target sales per day:</strong>
-  <%= @product.target_sales_per_day %>
-</p>
-
-<p>
-  <strong>Mfg time days:</strong>
-  <%= @product.mfg_time_days %>
-</p>
-
-<p>
-  <strong>Ship to amz days:</strong>
-  <%= @product.ship_to_amz_days %>
-</p>
-
-<p>
-  <strong>Tarrif rate:</strong>
-</p>
-
-<p>
-  <strong>Transaction fees:</strong>
-</p>
-
-<p>
-  <strong>Target ppc tacos:</strong>
-  <%= @product.target_ppc_tacos %>
-</p>
-
-<p>
-  <strong>Inspection cost:</strong>
-</p>
-
-<p>
-  <strong>Estimated unusable units perc:</strong>
-  <%= @product.estimated_unusable_units_perc %>
-</p>
-
-<p>
-  <strong>Other costs:</strong>
-  <%= @product.other_costs %>
-</p>
-
-<p>
-  <strong>Units needed to rank:</strong>
-  <%= @product.units_needed_to_rank %>
-</p>
-
-<p>
-  <strong>Inventory roll per year:</strong>
-  <%= @product.inventory_roll_per_year %>
-</p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <h4>Demand Verification</h4>
+      </div>
+    </div>
+  </div>
+</div>
