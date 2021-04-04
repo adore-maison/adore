@@ -59,22 +59,90 @@
     </div>
   </div>
 
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-body">
-        <h4>Selection Rules</h4>
-        <% SelectionStandard.all.each do |ss| %>
-          <%= check_box_tag "product[selection_standard_ids][]", ss.id, @product.selection_standard_ids.include?(ss.id), disabled: true %>
-          <%= ss.name %><br/>
-        <% end %>
+  <div class="col-md-8">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h4>Selection Rules</h4>
+            <% SelectionStandard.all.each do |ss| %>
+              <%= check_box_tag "product[selection_standard_ids][]", ss.id, @product.selection_standard_ids.include?(ss.id), disabled: true %>
+              <%= ss.name %><br/>
+            <% end %>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-body">
-        <h4>Demand Verification</h4>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h4>Demand Verification</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12"></br>
+        <div class="card">
+          <div class="card-body">
+            <h4>Gold Filters</h4><br>
+            <strong>Other Factors</strong>
+            <ul>
+              <li>Your product quality needs to be good no matter what.</li>
+              <li>You must differentiate; you can’t just duplicate an existing product with your logo.</li>
+              <li>Listing must be optimized.</li>
+              <li>X-Ray: 2 stars or higher is worth looking at; 4 stars or higher is extremely rare.</li>
+            </ul>
+            <br>
+            <strong>Main Filters</strong>
+            <ol>
+              <li>More than 4 products in the top 16 with a BSR</li>
+              <li>6 or more of the top 16 products sell more than 600 units per month (10 units/day)</li>
+              <li>Less than 50% of the top 16 products are well</li>
+              <li>At least 10 of the top 16 products have less than 500 reviews</li>
+              <li>No more than 2 in the top 16 have a review rate greater than 5%, nor 2 or more with either a negative review rate or a rate</li>
+              <li>8  or more of the top 16 products have a listing evaluation score of less than 9; several with less than 6.</li>
+              <li>Overall sales total of the top 16 listings is greater than 3k units per month without 1 of the 16 making up more than 75% of the total sales</li>
+              <li>Are there 6 listings or more in the top 16</li>
+              <li>Sort by unit sales; take top ASIN and plug into Cerebro.
+                <ul>
+                  <li>At least 3 keywords with more than 5ksearches (see screen for info).
+                  <li>At least 10 keywords ranking on page 1.</li>
+                  <li>Indicates several potential angles.</li>
+                </ul>
+              </li>
+              <li>Net profit 30% or more; aim for retail price 4-5x cost of manufacturing; avoid retail price below $15. Too much competition under $15. ROI >100% (ideally 150%) is best. Compounding is the key to rapid growth. Higher priced item generally means higher ROI. Item turnover is ideally at least 4x a year. Order every 2-3 months. If it takes too long to sell through, this hurts your inventory health.</li>
+              <li>Sales on the uptick or steady for 50% of top 16 sellers over the last year is ideal. You want to see the general market trending up.</li>
+              <li>8+ of top 16 listings are less than 2 years old.</li>
+              <li>Review manipulation?
+                <ul>
+                  <li>Did they start with a low number of reviews? If not, they may be a listing takeover.</li>
+                  <li>Watch out for sudden drops/disappearances of reviews (means Amazon removed them - possibility of unfair manipulation).</li>
+                  <li>Be cautious of spikes in review history</li>
+                </ul>
+              </li>
+              <li>Are page 1 prices variable or are they all the same? Difference in price means room for competition and differentitation, if not, competition soley on price</li>
+              <li>Can you differentiate the product or fix customer complaints?
+                <ul>
+                  <li>If the product isn’t easy to find on Alibaba, this is good.</li>
+                  <li>Good if similar products aren’t on deal/rebate sites.</li>
+                  <li>Items sourced from outside China eliminate a lot of the competition.</li>
+                  <li>2+ of top 16 selling 2x your initial investment for the past 3 months is a good sign - this shows growth potential.</li>
+                  <li>Use the profitability tool and shrink product dimensions to lower FBA size bracket and save fulfillment costs.</li>
+                  <li>Are any top products FBM that you can sell as FBA?</li>
+                </ul>
+              </li>
+              <li>For Brand Registry:
+                <ul>
+                  <li>Are there 10+ keywords under 1 million in the Search Frequency Rating?</li>
+                  <li>Do any of the top 3 clickshares have 0% conversion share?</li>
+                    <ul>
+                      <li>This indicates manipulation if so.</li>
+                      <li>Does one of the 3 dominate? If so, it’ll be difficult to compete.</li>
+                    </ul>
+                </ul>
+              </li>
+            </ol>
+          </div>
+        </div>
       </div>
     </div>
   </div>
