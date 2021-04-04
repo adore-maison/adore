@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
+  host: <%= ENV['ADORE_DATABASE_HOST'] %>
   database: adore_production
-  username: adore
-  password: <%= ENV['RUBY2_RAILS6_BOOTSTRAP_HEROKU_DATABASE_PASSWORD'] %>
+  username: <%= ENV['ADORE_DATABASE_USERNAME'] %>
+  password: <%= ENV['ADORE_DATABASE_PASSWORD'] %>
