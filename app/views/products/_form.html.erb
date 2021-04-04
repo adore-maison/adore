@@ -18,6 +18,11 @@
   </div>
 
   <div class="form-group">
+    <%= form.label :hsn %>
+    <%= form.text_field :hsn, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
     <%= form.label :description %>
     <%= form.text_area :description, class: "form-control" %>
   </div>
@@ -31,6 +36,16 @@
   <div class="form-group">
     <%= form.label :comp_price %>
     <%= form.text_field :comp_price, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :dimension %>
+    <%= form.text_field :dimension, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :weight_kg %>
+    <%= form.text_field :weight_kg, class: "form-control" %>
   </div>
 
   <div class="form-group">
@@ -101,11 +116,6 @@
   <div class="form-group">
     <%= form.label :factory_price %>
     <%= form.text_field :factory_price, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :weight_kg %>
-    <%= form.text_field :weight_kg, class: "form-control" %>
   </div>
 
 
