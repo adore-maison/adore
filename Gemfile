@@ -14,6 +14,7 @@ gem 'bootsnap', '~> 1.7', require: false
 gem 'newrelic_rpm', '~> 6.15'
 gem 'wicked', '~> 1.3', '>= 1.3.4'
 gem 'will_paginate', '~> 3.3'
+gem 'metainspector'
 
 
 group :development, :test do
