@@ -10,7 +10,7 @@
     <div class="card">
       <div class="card-body">
         <h4>Product Info</h4>
-        <%= image_tag(@product.photo_url, width: '120', alt: "Edit Entry") %>
+        <%= link_to image_tag(@product.photo_url, width: '120', alt: "Edit Entry"), "https://amazon.in/dp/#{@product.asin}", target: :blank  %>
         <p>
           <strong>Asin:</strong>
           <%= @product.asin %>
@@ -77,6 +77,24 @@
         <div class="card">
           <div class="card-body">
             <h4>Demand Verification</h4>
+            <%= link_to 'Add+', new_product_keyword_path(@product.id), class: "float-right" %>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Phrase</th>
+                  <th>Volume</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @product.keywords.each do |keyword| %>
+                  <tr>
+                    <td><%= link_to keyword.phrase, "https://www.amazon.in/s?k=#{keyword.phrase.gsub(/\s/, '+')}", target: :blank %></td>
+                    <td><%= link_to keyword.volume, "https://members.helium10.com/magnet2/view?accountId=1543160121&keyword=#{keyword.phrase.gsub(/\s/, '+')}&store=in&id=9305582", target: :blank %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

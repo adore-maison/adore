@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-md-10">
+    <h3>Keywords</h3>
+  </div>
+
+  <div class="col-md-2">
+  </div>
+</div>
+
+<div>
+  <%= page_entries_info @keywords %>
+</div>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Phrase</th>
+      <th>Volume</th>
+      <th>CIQ Score</th>
+      <th>CPR Eight Day Giveaway</th>
+      <th>Product</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @keywords.each do |keyword| %>
+      <tr>
+        <td><%= link_to keyword.phrase, "https://www.amazon.in/s?k=#{keyword.phrase.gsub(/\s/, '+')}", target: :blank %></td>
+        <td><%= link_to keyword.volume, "https://members.helium10.com/magnet2/view?accountId=1543160121&keyword=#{keyword.phrase.gsub(/\s/, '+')}&store=in&id=9305582", target: :blank %></td>
+        <td><%= keyword.ciq_score %></td>
+        <td><%= keyword.cpr_eight_day_giveaway %></td>
+        <td><%= link_to keyword.product.asin, product_path(keyword.product) %></td>
+        <td><%= link_to 'Show', keyword %></td>
+        <td><%= link_to 'Edit', edit_keyword_path(keyword) %></td>
+        <td><%= link_to 'Destroy', keyword, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @keywords %>
+<br>
