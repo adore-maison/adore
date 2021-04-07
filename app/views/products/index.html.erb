@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <div class="row">
   <div class="col-md-10">
     <h3>Products</h3>
@@ -35,7 +33,7 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= link_to product.asin, "https://amazon.in/dp/#{product.asin}", target: :blank %></td>
+        <td><%= link_to product.asin, "https://amazon.in/dp/#{product.asin}", target: :blank, class: "text-muted" %></td>
         <td><%= image_tag(product.photo_url, width: '120', alt: "Edit Entry") %></td>
         <td><%= link_to product.description, product_path(product) %></td>
         <td><%= product.comp_price %></td>
