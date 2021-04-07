@@ -65,7 +65,7 @@
         <div class="card">
           <div class="card-body">
             <h4>Selection Rules</h4>
-            <% SelectionStandard.all.each do |ss| %>
+            <% SelectionStandard.where(filter_type: 0).each do |ss| %>
               <%= check_box_tag "product[selection_standard_ids][]", ss.id, @product.selection_standard_ids.include?(ss.id), disabled: true %>
               <%= ss.name %><br/>
             <% end %>
@@ -76,7 +76,7 @@
       <div class="col-md-6">
         <div class="card">
           <div class="card-body">
-            <h4>Demand Verification</h4>
+            <h4>Top Keywords</h4>
             <%= link_to 'Add+', new_product_keyword_path(@product.id), class: "float-right" %>
             <table class="table table-bordered">
               <thead>
@@ -95,6 +95,17 @@
                 <% end %>
               </tbody>
             </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12"></br>
+        <div class="card">
+          <div class="card-body">
+            <h4>Market Demand Evaluation</h4><br>
+            <% SelectionStandard.where(filter_type: 1).each do |ss| %>
+              <%= check_box_tag "product[selection_standard_ids][]", ss.id, @product.selection_standard_ids.include?(ss.id), disabled: true %>
+              <%= ss.name %><br/>
+            <% end %>
           </div>
         </div>
       </div>
