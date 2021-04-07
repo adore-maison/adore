@@ -1,0 +1,37 @@
+<%= form_with(model: keyword, url: [product, keyword]) do |form| %>
+  <% if keyword.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(keyword.errors.count, "error") %> prohibited this keyword from being saved:</h2>
+
+      <ul>
+        <% keyword.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :phrase %>
+    <%= form.text_field :phrase, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :volume %>
+    <%= form.text_field :volume, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :ciq_score %>
+    <%= form.text_field :ciq_score, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label  'CPR 8 Day Giveaway', id: :cpr_eight_day_giveaway %>
+    <%= form.text_field :cpr_eight_day_giveaway, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Done',class: 'btn btn-success' %>
+  </div>
+<% end %>

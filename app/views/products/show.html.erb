@@ -10,10 +10,10 @@
     <div class="card">
       <div class="card-body">
         <h4>Product Info</h4>
-        <%= image_tag(@product.photo_url, width: '120', alt: "Edit Entry") %>
+        <%= link_to image_tag(@product.photo_url, width: '120', alt: "Edit Entry"), "https://amazon.in/dp/#{@product.asin}", target: :blank  %>
         <p>
           <strong>Asin:</strong>
-          <%= @product.asin %>
+          <%= link_to @product.asin, "https://members.helium10.com/cerebro/reverse-search?accountId=1543160121&asin=#{@product.asin}&amazonstore=in&searchType=organic&exactAsin=1" %>
         </p>
         <p>
           <strong>Description:</strong>
@@ -55,6 +55,10 @@
           <strong>Review Count:</strong>
           <%= @product.comp_review_count %>
         </p>
+        <p>
+          <strong>Comment:</strong>
+          <%= @product.comments %>
+        </p>
       </div>
     </div>
   </div>
@@ -65,7 +69,7 @@
         <div class="card">
           <div class="card-body">
             <h4>Selection Rules</h4>
-            <% SelectionStandard.all.each do |ss| %>
+            <% SelectionStandard.where(filter_type: 0).each do |ss| %>
               <%= check_box_tag "product[selection_standard_ids][]", ss.id, @product.selection_standard_ids.include?(ss.id), disabled: true %>
               <%= ss.name %><br/>
             <% end %>
@@ -76,7 +80,36 @@
       <div class="col-md-6">
         <div class="card">
           <div class="card-body">
-            <h4>Demand Verification</h4>
+            <h4>Top Keywords</h4>
+            <%= link_to 'Add+', new_product_keyword_path(@product.id), class: "float-right" %>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Phrase</th>
+                  <th>Volume</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @product.keywords.each do |keyword| %>
+                  <tr>
+                    <td><%= link_to keyword.phrase, "https://www.amazon.in/s?k=#{keyword.phrase.gsub(/\s/, '+')}", target: :blank %></td>
+                    <td><%= link_to keyword.volume, "https://members.helium10.com/magnet2/reverse-search?accountId=1543160121&keyword=#{keyword.phrase.gsub(/\s/, '%20')}&amazonstore=in", target: :blank %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12"></br>
+        <div class="card">
+          <div class="card-body">
+            <h4>Market Demand Evaluation</h4><br>
+            <% SelectionStandard.where(filter_type: 1).each do |ss| %>
+              <%= check_box_tag "product[selection_standard_ids][]", ss.id, @product.selection_standard_ids.include?(ss.id), disabled: true %>
+              <%= ss.name %><br/>
+            <% end %>
           </div>
         </div>
       </div>
@@ -94,14 +127,6 @@
             <br>
             <strong>Main Filters</strong>
             <ol>
-              <li>More than 4 products in the top 16 with a BSR</li>
-              <li>6 or more of the top 16 products sell more than 600 units per month (10 units/day)</li>
-              <li>Less than 50% of the top 16 products are well</li>
-              <li>At least 10 of the top 16 products have less than 500 reviews</li>
-              <li>No more than 2 in the top 16 have a review rate greater than 5%, nor 2 or more with either a negative review rate or a rate</li>
-              <li>8  or more of the top 16 products have a listing evaluation score of less than 9; several with less than 6.</li>
-              <li>Overall sales total of the top 16 listings is greater than 3k units per month without 1 of the 16 making up more than 75% of the total sales</li>
-              <li>Are there 6 listings or more in the top 16</li>
               <li>Sort by unit sales; take top ASIN and plug into Cerebro.
                 <ul>
                   <li>At least 3 keywords with more than 5ksearches (see screen for info).
@@ -110,8 +135,6 @@
                 </ul>
               </li>
               <li>Net profit 30% or more; aim for retail price 4-5x cost of manufacturing; avoid retail price below $15. Too much competition under $15. ROI >100% (ideally 150%) is best. Compounding is the key to rapid growth. Higher priced item generally means higher ROI. Item turnover is ideally at least 4x a year. Order every 2-3 months. If it takes too long to sell through, this hurts your inventory health.</li>
-              <li>Sales on the uptick or steady for 50% of top 16 sellers over the last year is ideal. You want to see the general market trending up.</li>
-              <li>8+ of top 16 listings are less than 2 years old.</li>
               <li>Review manipulation?
                 <ul>
                   <li>Did they start with a low number of reviews? If not, they may be a listing takeover.</li>
@@ -119,7 +142,6 @@
                   <li>Be cautious of spikes in review history</li>
                 </ul>
               </li>
-              <li>Are page 1 prices variable or are they all the same? Difference in price means room for competition and differentitation, if not, competition soley on price</li>
               <li>Can you differentiate the product or fix customer complaints?
                 <ul>
                   <li>If the product isn’t easy to find on Alibaba, this is good.</li>

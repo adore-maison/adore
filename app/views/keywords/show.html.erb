@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Phrase:</strong>
+  <%= @keyword.phrase %>
+</p>
+
+<p>
+  <strong>Volume:</strong>
+  <%= @keyword.volume %>
+</p>
+
+<p>
+  <strong>Ciq score:</strong>
+  <%= @keyword.ciq_score %>
+</p>
+
+<p>
+  <strong>Cpr eight day giveaway:</strong>
+  <%= @keyword.cpr_eight_day_giveaway %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @keyword.product_id %>
+</p>
+
+<%= link_to 'Edit', edit_keyword_path(@keyword) %> |
+<%= link_to 'Back', keywords_path %>
