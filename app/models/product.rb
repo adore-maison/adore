@@ -11,7 +11,6 @@ class Product < ApplicationRecord
     available_filters: [
       :sorted_by,
       :search_query,
-      :with_investor_type,
       :with_stage
     ]
   )
@@ -36,7 +35,8 @@ class Product < ApplicationRecord
       ["created_at (oldest first)", "created_at_asc"],
       ["updated_at (newest first)", "updated_at_desc"],
       ["updated_at (oldest first)", "updated_at_asc"],
-      ["price (oldest first)", "comp_price_asc"],
+      ["price (high)", "comp_price_asc"],
+      ["price (low)", "comp_price_desc"],
     ]
   end
 
@@ -78,8 +78,11 @@ class Product < ApplicationRecord
       self.ordered_samples
     when /^8/
       self.placed_order
+    when /^9/
+      self.discarded
     else
       raise(ArgumentError, "Invalid sort option: #{type_option.inspect}")
     end
   }
+
 end
