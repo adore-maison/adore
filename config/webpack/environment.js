@@ -12,9 +12,9 @@ environment.plugins.prepend(
   'Provide',
   new webpack.ProvidePlugin({
     // jQuery
-    $: 'jquery',
-    jQuery: 'jquery',
-    jquery: 'jquery',
+    $: 'jquery/src/jquery',
+    jQuery: 'jquery/src/jquery',
+    jquery: 'jquery','window.jQuery': 'jquery',
 
     // Window
     'window.jQuery': 'jquery',

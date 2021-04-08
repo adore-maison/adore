@@ -15,6 +15,7 @@ gem 'newrelic_rpm', '~> 6.15'
 gem 'wicked', '~> 1.3', '>= 1.3.4'
 gem 'will_paginate', '~> 3.3'
 gem 'metainspector'
+gem 'filterrific', '~> 5.2', '>= 5.2.1'
 
 
 group :development, :test do

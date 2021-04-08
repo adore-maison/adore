@@ -5,6 +5,7 @@
 
 import 'src/bootstrap.js'
 import 'src/fontawesome.js'
+import './filterrific-jquery'
 
 require('@rails/ujs').start()
 require('turbolinks').start()

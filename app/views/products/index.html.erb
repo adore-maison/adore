@@ -8,48 +8,39 @@
   </div>
 </div>
 
-<div>
-  <%= page_entries_info @products %>
-</div>
+<%= form_for_filterrific @filterrific, html: {class: "form-row"} do |f| %>
+  <div class="col-3">
+    <%= f.text_field(
+      :search_query,
+      class: 'filterrific-periodically-observed form-control',
+      placeholder: 'Search'
+    ) %>
+  </div>
+  <div class="col-md-3">
+    <%= f.select( :with_stage,
+      Product.stages,
+      { include_blank: '- Product Stage -' },
+      class: 'form-control'
+    ) %>
+  </div>
+  <div class="col-md-3">
+    <%= f.select(:sorted_by,
+      Product.options_for_sorted_by,
+      { include_blank: '- Sort By -' },
+      class: "form-control"
+      )%>
+  </div>
+    <%= link_to(
+      'Reset filters',
+      reset_filterrific_url,
+      class: 'text-muted'
+    ) %>
+    <%= render_filterrific_spinner %>
+<% end %>
+<br><br>
 
-<table class="table table-bordered table-responsive">
-  <thead>
-    <tr>
-      <th>ASIN</th>
-      <th>Photo</th>
-      <th>Description</th>
-      <th>Stage</th>
-      <th>Comp Price</th>
-      <th>Comp Sales</th>
-      <th>HSN</th>
-      <th>Comp FBA Fees</th>
-      <th>Rank Units</th>
-      <th>ROI</th>
-      <th>Profit Margin</th>
-      <th>Target Daily Sales</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= link_to product.asin, "https://amazon.in/dp/#{product.asin}", target: :blank, class: "text-muted" %></td>
-        <td><%= image_tag(product.photo_url, width: '120', alt: "Edit Entry") %></td>
-        <td><%= link_to product.description, product_path(product) %></td>
-        <td><%= product.stage %></td>
-        <td><%= product.comp_price %></td>
-        <td><%= product.comp_sales %></td>
-        <td><%= product.hsn %></td>
-        <td><%= product.comp_fba_fees %></td>
-        <td><%= product.units_needed_to_rank %></td>
-        <td></td>
-        <td></td>
-        <td><%= product.target_sales_per_day %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= will_paginate @products %>
+<%= render(
+  partial: 'products/list',
+  locals: { products: @products }
+) %>
 <br>
