@@ -35,7 +35,7 @@ class KeywordsController < ApplicationController
   # PATCH/PUT /keywords/1
   def update
     if @keyword.update(keyword_params)
-      redirect_to @product, notice: 'Keyword was successfully updated.'
+      redirect_to @keyword.product, notice: 'Keyword was successfully updated.'
     else
       render :edit
     end
