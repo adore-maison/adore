@@ -16,6 +16,7 @@ gem 'wicked', '~> 1.3', '>= 1.3.4'
 gem 'will_paginate', '~> 3.3'
 gem 'metainspector'
 gem 'filterrific', '~> 5.2', '>= 5.2.1'
+gem 'devise-bootstrap-views', '~> 1.0'
 
 
 group :development, :test do
