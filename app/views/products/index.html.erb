@@ -18,6 +18,7 @@
       <th>ASIN</th>
       <th>Photo</th>
       <th>Description</th>
+      <th>Stage</th>
       <th>Comp Price</th>
       <th>Comp Sales</th>
       <th>HSN</th>
@@ -36,6 +37,7 @@
         <td><%= link_to product.asin, "https://amazon.in/dp/#{product.asin}", target: :blank, class: "text-muted" %></td>
         <td><%= image_tag(product.photo_url, width: '120', alt: "Edit Entry") %></td>
         <td><%= link_to product.description, product_path(product) %></td>
+        <td><%= product.stage %></td>
         <td><%= product.comp_price %></td>
         <td><%= product.comp_sales %></td>
         <td><%= product.hsn %></td>

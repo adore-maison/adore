@@ -18,3 +18,12 @@ public/packs/*
 public/packs-test/*
 tmp/*
 *.csv
+
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
+/coverage/*
+/spec/examples.txt
+/test.rb
+/tasks.rb

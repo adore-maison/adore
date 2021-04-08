@@ -16,6 +16,10 @@
           <%= link_to @product.asin, "https://members.helium10.com/cerebro/reverse-search?accountId=1543160121&asin=#{@product.asin}&amazonstore=in&searchType=organic&exactAsin=1" %>
         </p>
         <p>
+          <strong>Stage:</strong>
+          <%= @product.stage %>
+        </p>
+        <p>
           <strong>Description:</strong>
           <%= @product.description %>
         </p>
