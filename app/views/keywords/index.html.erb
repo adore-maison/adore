@@ -26,7 +26,7 @@
     <% @keywords.each do |keyword| %>
       <tr>
         <td><%= link_to keyword.phrase, "https://www.amazon.in/s?k=#{keyword.phrase.gsub(/\s/, '+')}", target: :blank %></td>
-        <td><%= link_to keyword.volume, "https://members.helium10.com/magnet2/reverse-search?accountId=1543160121&keyword=#{keyword.phrase.gsub(/\s/, '%20')}&amazonstore=in", target: :blank %></td>
+        <td><%= link_to number_with_precision(keyword.volume , :precision => 0, :delimiter => ','), "https://members.helium10.com/magnet2/reverse-search?accountId=1543160121&keyword=#{keyword.phrase.gsub(/\s/, '%20')}&amazonstore=in", target: :blank %></td>
         <td><%= keyword.ciq_score %></td>
         <td><%= keyword.cpr_eight_day_giveaway %></td>
         <td><%= link_to keyword.product.asin, product_path(keyword.product) %></td>
