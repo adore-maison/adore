@@ -32,6 +32,10 @@
           <%= @product.main_category %>
         </p>
         <p>
+          <strong>HSN:</strong>
+          <%= @product.hsn %>
+        </p>
+        <p>
           <strong>Dimension:</strong>
           <%= @product.dimension %>
         </p>
@@ -48,8 +52,16 @@
           <%= @product.comp_price %>
         </p>
         <p>
+          <strong>Fba Fee:</strong>
+          <%= @product.comp_fba_fees %>
+        </p>
+        <p>
           <strong>Avg Sales:</strong>
           <%= @product.comp_sales %>
+        </p>
+        <p>
+          <strong>Avg Sales:</strong>
+          <%= number_with_precision(@product.comp_revenue , :precision => 1, :delimiter => ',')%>
         </p>
         <p>
           <strong>Rating:</strong>
@@ -72,7 +84,7 @@
       <div class="col-md-6">
         <div class="card">
           <div class="card-body">
-            <h4>Selection Rules</h4>
+            <h4>Selection Rules</h4><span></span><p></p>
             <% SelectionStandard.where(filter_type: 0).each do |ss| %>
               <%= check_box_tag "product[selection_standard_ids][]", ss.id, @product.selection_standard_ids.include?(ss.id), disabled: true %>
               <%= ss.name %><br/>
@@ -82,6 +94,31 @@
       </div>
 
       <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h4>Selection Score</h4>
+            <h1 class='text-md-center text-info'><p></p><p></p>
+              <%= @product.selection_standard_ids.count.to_s + " / " + SelectionStandard.all.count.to_s %>
+            </h1>
+            <p class='text-md-center text-black-50'><%= (@product.selection_standard_ids.count / SelectionStandard.all.count.to_f).to_d.round(2, :truncate).to_f %></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12"></br>
+        <div class="card">
+          <div class="card-body">
+            <h4>Market Demand Evaluation</h4><br>
+            <% SelectionStandard.where(filter_type: 1).each do |ss| %>
+              <div class="form-check form-check-inline">
+                <%= check_box_tag "product[selection_standard_ids][]", ss.id, @product.selection_standard_ids.include?(ss.id), disabled: true, class: 'form-check-input' %>
+                <label class="form-check-label <%= @product.selection_standard_ids.include?(ss.id) ? "text-success" : "text-warning" %>" for="inlineCheckbox1"><%= ss.name %></label>
+                <br/>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12"></br>
         <div class="card">
           <div class="card-body">
             <h4>Top Keywords</h4>
@@ -98,22 +135,11 @@
                 <% @product.keywords.each do |keyword| %>
                   <tr>
                     <td><%= link_to keyword.phrase, "https://www.amazon.in/s?k=#{keyword.phrase.gsub(/\s/, '+')}", target: :blank %></td>
-                    <td><%= link_to keyword.volume, "https://members.helium10.com/magnet2/reverse-search?accountId=1543160121&keyword=#{keyword.phrase.gsub(/\s/, '%20')}&amazonstore=in", target: :blank %></td>
+                    <td><%= link_to link_to number_with_precision(keyword.volume , :precision => 0, :delimiter => ','), "https://members.helium10.com/magnet2/reverse-search?accountId=1543160121&keyword=#{keyword.phrase.gsub(/\s/, '%20')}&amazonstore=in", target: :blank %></td>
                   </tr>
                 <% end %>
               </tbody>
             </table>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-12"></br>
-        <div class="card">
-          <div class="card-body">
-            <h4>Market Demand Evaluation</h4><br>
-            <% SelectionStandard.where(filter_type: 1).each do |ss| %>
-              <%= check_box_tag "product[selection_standard_ids][]", ss.id, @product.selection_standard_ids.include?(ss.id), disabled: true %>
-              <%= ss.name %><br/>
-            <% end %>
           </div>
         </div>
       </div>
