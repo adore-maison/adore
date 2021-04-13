@@ -24,6 +24,10 @@ class Product < ApplicationRecord
       order("products.updated_at #{direction}")
     when /^comp_price_/
       order("products.comp_price #{direction}")
+    when /^sales_/
+      order("products.comp_sales #{direction}")
+    when /^fba_fees_/
+      order("products.comp_fba_fees #{direction}")
     else
       raise(ArgumentError, "Invalid sort option: #{sort_option.inspect}")
     end
@@ -37,6 +41,10 @@ class Product < ApplicationRecord
       ["updated_at (oldest first)", "updated_at_asc"],
       ["price (high)", "comp_price_asc"],
       ["price (low)", "comp_price_desc"],
+      ["sales (high)", "sales_asc"],
+      ["sales (low)", "sales_desc"],
+      ["fba fees (high)", "fba_fees_asc"],
+      ["fba fees (low)", "fba_fees_desc"]
     ]
   end
 
