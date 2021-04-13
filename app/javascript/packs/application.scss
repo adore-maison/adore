@@ -1,2 +1,18 @@
 @import "stylesheets/bootstrap";
 @import "stylesheets/turbolinks-progress-bar";
+
+.verticle-center-align {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-register {
+  height: auto;
+  background-color: #ffff;
+  border-radius: 8px;
+  max-width: 650px;
+  margin: 70px 0 70px;
+  min-height: 400px;
+  padding: 10px 10px 10px 10px;
+}
