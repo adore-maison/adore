@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_13_162324) do
+ActiveRecord::Schema.define(version: 2021_04_13_163343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 2021_04_13_162324) do
     t.string "dimension"
     t.string "amz_size"
     t.integer "country_of_origin", default: 0
+    t.integer "potential", default: 0
   end
 
   create_table "selection_rules", force: :cascade do |t|

@@ -24,6 +24,13 @@
     ) %>
   </div>
   <div class="col-md-3">
+    <%= f.select( :with_potential,
+      Product.potentials,
+      { include_blank: '- Product Potential -' },
+      class: 'form-control'
+    ) %>
+  </div>
+  <div class="col-md-3">
     <%= f.select(:sorted_by,
       Product.options_for_sorted_by,
       { include_blank: '- Sort By -' },

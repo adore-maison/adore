@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   enum stage: { basic_info: 0, intial_checks: 1, verifed_market_demand: 2, competitors_analysed: 3, reviews_analysed: 4, profit_first_calculation: 5, contacted_suppliers: 6, ordered_samples: 7, placed_order: 8, discarded: 9 }
-  enum country_of_origin: { none: 0, india: 1, china: 2, usa: 3 }
+  enum country_of_origin: { undefined: 0, india: 1, china: 2, usa: 3 }
+  enum potential: { low: 0, future_payoff: 1, hackable: 2, order_now: 3 }
 
   self.per_page = 7
 
@@ -13,7 +14,8 @@ class Product < ApplicationRecord
     available_filters: [
       :sorted_by,
       :search_query,
-      :with_stage
+      :with_stage,
+      :with_potential
     ]
   )
 
@@ -90,6 +92,21 @@ class Product < ApplicationRecord
       self.placed_order
     when /^9/
       self.discarded
+    else
+      raise(ArgumentError, "Invalid sort option: #{type_option.inspect}")
+    end
+  }
+
+  scope :with_potential, ->(type_option) {
+    case type_option.to_s
+    when /^0/
+      self.low
+    when /^1/
+      self.future_payoff
+    when /^2/
+      self.hackable
+    when /^3/
+      self.order_now
     else
       raise(ArgumentError, "Invalid sort option: #{type_option.inspect}")
     end
