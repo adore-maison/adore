@@ -14,7 +14,7 @@
         <%= link_to image_tag(@product.photo_url, width: '120', alt: "Edit Entry"), "https://amazon.in/dp/#{@product.asin}", target: :blank  %>
         <p>
           <strong>Asin:</strong>
-          <%= link_to @product.asin, "https://members.helium10.com/cerebro/reverse-search?accountId=1543160121&asin=#{@product.asin}&amazonstore=in&searchType=organic&exactAsin=1" %>
+          <%= link_to @product.asin, "https://members.helium10.com/cerebro/reverse-search?accountId=1543160121&asin=#{@product.asin}&amazonstore=in&searchType=organic&exactAsin=1", target: :blank %>
         </p>
         <p>
           <strong>Stage:</strong>
