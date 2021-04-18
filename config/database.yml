@@ -82,5 +82,7 @@ production:
   <<: *default
   host: <%= ENV['ADORE_DATABASE_HOST'] %>
   database: adore_production
+  port: <%= ENV['ADORE_DATABASE_PORT'] %>
   username: <%= ENV['ADORE_DATABASE_USERNAME'] %>
   password: <%= ENV['ADORE_DATABASE_PASSWORD'] %>
+  sslmode: <%= ENV['ADORE_DATABASE_SSLMODE'] %>
