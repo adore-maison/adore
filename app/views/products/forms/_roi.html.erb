@@ -1,0 +1,169 @@
+<%= form_with(model: product) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+        <% product.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <b>Target</b>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= form.label :target_selling_price %>
+      <%= form.text_field :target_selling_price, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= form.label :target_profit %>
+      <%= form.text_field :target_profit, class: "form-control" %>
+    </div>
+  </div>
+
+  <b>Marketplace Expenses</b>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <%= form.label :amz_referal_rate %>
+      <%= form.text_field :amz_referal_rate, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= form.label :amz_fixed_closing_fee %>
+      <%= form.text_field :amz_fixed_closing_fee, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= form.label :target_ppc_tacos %>
+      <%= form.text_field :target_ppc_tacos, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= form.label :estimated_unusable_units_perc %>
+      <%= form.text_field :estimated_unusable_units_perc, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= form.label :bank_charges %>
+      <%= form.text_field :bank_charges, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= form.label :monthly_storage %>
+      <%= form.text_field :monthly_storage, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= form.label :shipping %>
+      <%= form.text_field :shipping, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= form.label :inventory_placement %>
+      <%= form.text_field :inventory_placement, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= form.label :other_shipping_storage_charges %>
+      <%= form.text_field :other_shipping_storage_charges, class: "form-control" %>
+    </div>
+  </div>
+
+  <b>Manufacturing</b>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= form.label :order_quantity %>
+      <%= form.text_field :order_quantity, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= form.label :factory_price %>
+      <%= form.text_field :factory_price, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <%= form.label :manuf_labels_cost_perc %>
+      <%= form.text_field :manuf_labels_cost_perc, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= form.label :manuf_box_cost_perc %>
+      <%= form.text_field :manuf_box_cost_perc, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= form.label :manuf_mould_cost_perc %>
+      <%= form.text_field :manuf_mould_cost_perc, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= form.label :manuf_print_cost_perc %>
+      <%= form.text_field :manuf_print_cost_perc, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= form.label :manuf_other_cost_perc %>
+      <%= form.text_field :manuf_other_cost_perc, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <%= form.label :manuf_inspection_cost %>
+      <%= form.text_field :manuf_inspection_cost, class: "form-control" %>
+    </div>
+  </div>
+
+  <b>Freigth + Customs</b>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <%= form.label :fc_freight %>
+      <%= form.text_field :fc_freight, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-3">
+      <%= form.label :fc_customs %>
+      <%= form.text_field :fc_customs, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-3">
+      <%= form.label :fc_cartons %>
+      <%= form.text_field :fc_cartons, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-3">
+      <%= form.label :fc_freight_forwarder_fees %>
+      <%= form.text_field :fc_freight_forwarder_fees, class: "form-control" %>
+    </div>
+  </div>
+
+  <b>Creatives</b>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <%= form.label :c_photographer %>
+      <%= form.text_field :c_photographer, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-3">
+      <%= form.label :c_photo_edits %>
+      <%= form.text_field :c_photo_edits, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-3">
+      <%= form.label :c_stock_images %>
+      <%= form.text_field :c_stock_images, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-3">
+      <%= form.label :c_other_1 %>
+      <%= form.text_field :c_other_1, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Save", class: 'btn btn-success' %>
+  </div>
+<% end %>
