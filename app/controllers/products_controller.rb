@@ -30,8 +30,7 @@ class ProductsController < ApplicationController
 
   # POST /products
   def create
-    product = AsinGrabberService.new(product_params[:asin]).perform
-    Rails.logger.info product.to_s
+    product = grab_asin_details
 
     @product = Product.new(product_params)
     @product.description = product[:description]
@@ -49,8 +48,19 @@ class ProductsController < ApplicationController
   end
 
   # PATCH/PUT /products/1
-  def update
-    if @product.update(product_params)
+  def update #TODO optimise
+    product = grab_asin_details
+    @product_details = product_params
+    if !product_params[:description].present? && product[:description].present?
+      @product_details['description'] = product[:description]
+      @product_details['photo_url'] = product[:photo_url]
+      @product_details['comp_price'] = product[:comp_price]
+      @product_details['comp_rating'] = product[:comp_rating]
+      @product_details['main_category'] = product[:main_category]
+      @product_details['comp_review_count'] = product[:comp_review_count]
+    end
+
+    if @product.update(@product_details)
       redirect_to @product, notice: 'Product was successfully updated.'
     else
       render :edit
@@ -71,6 +81,12 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:asin, :description, :stage, :photo_url, :comp_price, :comp_rating, :comp_review_count, :main_category,:hsn, :comp_sales, :comp_revenue, :comp_fba_fees, :main_keyword, :factory_price, :dimension, :weight_kg, :target_selling_price, :launch_price, :units_needed_to_rank, :units_per_master_carton, :target_sales_per_day, :mfg_time_days, :ship_to_amz_days, :target_ppc_tacos, :inspection_cost, :estimated_unusable_units_perc, :other_costs, :units_needed_to_rank, :inventory_roll_per_year, :comments, :potential, selection_standard_ids: [])
+      params.require(:product).permit(:asin, :description, :stage, :photo_url, :comp_price, :comp_rating, :comp_review_count, :main_category,:hsn, :comp_sales, :comp_revenue, :comp_fba_fees, :main_keyword, :factory_price, :dimension, :weight_kg, :target_selling_price, :launch_price, :units_needed_to_rank, :units_per_master_carton, :target_sales_per_day, :mfg_time_days, :ship_to_amz_days, :target_ppc_tacos, :inspection_cost, :estimated_unusable_units_perc, :other_costs, :units_needed_to_rank, :inventory_roll_per_year, :comments, :potential, :target_profit, selection_standard_ids: [])
+    end
+
+    def grab_asin_details
+      product = AsinGrabberService.new(product_params[:asin]).perform
+      Rails.logger.info product.to_s
+      product
     end
 end
