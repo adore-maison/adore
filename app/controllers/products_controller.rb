@@ -49,17 +49,18 @@ class ProductsController < ApplicationController
 
   # PATCH/PUT /products/1
   def update #TODO optimise
-    if @product.update(product_params)
-      product = grab_asin_details
-      if product[:description].present?
-        @product.description = product[:description]
-        @product.photo_url = product[:photo_url]
-        @product.comp_price = product[:comp_price]
-        @product.comp_rating = product[:comp_rating]
-        @product.main_category = product[:main_category]
-        @product.comp_review_count = product[:comp_review_count]
-        @product.save!
-      end
+    product = grab_asin_details
+    @product_details = product_params
+    if !product_params[:description].present? && product[:description].present?
+      @product_details['description'] = product[:description]
+      @product_details['photo_url'] = product[:photo_url]
+      @product_details['comp_price'] = product[:comp_price]
+      @product_details['comp_rating'] = product[:comp_rating]
+      @product_details['main_category'] = product[:main_category]
+      @product_details['comp_review_count'] = product[:comp_review_count]
+    end
+
+    if @product.update(@product_details)
       redirect_to @product, notice: 'Product was successfully updated.'
     else
       render :edit
