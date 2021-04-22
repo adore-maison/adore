@@ -112,4 +112,14 @@ class Product < ApplicationRecord
     end
   }
 
+  def profit_per_pc
+    return nil if !self.target_profit.present? || self.target_selling_price.blank?
+    self.target_selling_price * (self.target_profit / 100)
+  end
+
+  def amount_available_for_product_expenses
+    return nil if self.profit_per_pc.nil?
+    self.target_selling_price - self.profit_per_pc
+  end
+
 end
